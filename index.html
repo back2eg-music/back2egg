@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>B2E — independent band</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f5f5f5;
+      --fg: #111111;
+      --muted: #777777;
+      --border: #c0c0c0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 14px;
+      line-height: 1.4;
+      background: var(--bg);
+      color: var(--fg);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+
+    a:hover {
+      text-decoration-style: dashed;
+    }
+
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 16px 16px 64px;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+      margin-bottom: 16px;
+      min-height: 8px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 800px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* LEFT COLUMN */
+
+    .column-main {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .feature {
+      border: 1px solid var(--border);
+      padding: 8px;
+      background: #ffffff;
+    }
+
+    .feature-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+      margin-bottom: 8px;
+    }
+
+    .feature-media {
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    .feature-media img,
+    .feature-media iframe,
+    .feature-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; object-position: left top;
+      border: none;
+    }
+      border: none;
+    }
+
+    .feature-caption {
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .feature-secondary {
+      margin-top: 8px;
+    }
+
+    .mute-toggle {
+      position: absolute;
+      bottom: 6px;
+      right: 6px;
+      padding: 2px 4px;
+      font-size: 11px;
+      border: 1px solid var(--fg);
+      background: #ffffff;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* BLOG / LOG */
+
+    .blog {
+      border: 1px solid var(--border);
+      padding: 8px;
+      background: #ffffff;
+    }
+
+    .blog-header {
+      font-size: 10px;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+      margin-bottom: 8px;
+    }
+
+    .blog-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .blog-item {
+      border-top: 1px solid var(--border);
+      padding: 6px 0;
+      cursor: pointer;
+    }
+
+    .blog-item:first-of-type {
+      border-top: none;
+    }
+
+    .blog-summary {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .blog-meta {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .blog-title {
+      font-size: 13px;
+    }
+
+    .blog-text {
+      font-size: 12px;
+      color: #333333;
+    }
+
+    .blog-item.open {
+      background: #f0f0f0;
+    }
+
+    .blog-extra {
+      display: none;
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px dashed var(--border);
+      font-size: 12px;
+    }
+
+    .blog-item.open .blog-extra {
+      display: block;
+    }
+
+    .blog-media {
+      margin-bottom: 6px;
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      overflow: hidden;
+      background: transparent;
+    }
+
+
+    .blog-media img,
+    .blog-media iframe,
+    .blog-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: left top;
+      border: none;
+    } object-position: left top;
+      border: none;
+    }
+
+    .blog-extra-text {
+      color: #333333;
+    }
+
+    .blog-hint {
+      margin-top: 6px;
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* RIGHT COLUMN */
+
+    .column-links {
+      border: 1px solid var(--border);
+      padding: 8px;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .about {
+      font-size: 12px;
+      color: #222222;
+    }
+
+    .about p {
+      margin: 0 0 8px;
+    }
+
+    .link-group {
+      border-top: 1px solid var(--border);
+      padding-top: 8px;
+      font-size: 12px;
+    }
+
+    .link-group-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      color: #333333;
+    }
+
+    .link-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .link-list li {
+      padding: 2px 0;
+    }
+
+    footer {
+      margin-top: 24px;
+      border-top: 1px solid var(--border);
+      padding-top: 8px;
+      font-size: 10px;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+<main>
+
+  <!-- header без названия проекта, только линия -->
+  <header></header>
+
+  <section class="layout">
+    <!-- LEFT COLUMN -->
+    <div class="column-main">
+      <!-- FEATURE FRAME (общий превью-блок) -->
+      <section class="feature" aria-label="featured">
+        <div class="feature-label">now / featured</div>
+        <div class="feature-media">
+          <!-- картинка по умолчанию; можно заменить на video позже -->
+          <img src="featured.jpeg" alt="featured media" />
+        </div>
+        <div class="feature-caption">
+          new live session · 2025
+        </div>
+      </section>
+
+      <!-- LOG / UPDATES -->
+      <section class="blog" aria-label="log">
+        <div class="blog-header">log / updates</div>
+
+        <div class="blog-list">
+
+          <!-- BLOG ITEM 1 (с медиа) -->
+          <article class="blog-item" data-item="1">
+            <div class="blog-summary">
+              <div class="blog-meta">2025-11-19 · live</div>
+              <div class="blog-title">show at RELAXIN — set with new material</div>
+              <div class="blog-text">first performance of new songs written for odixxey sessions. limited capacity.</div>
+            </div>
+            <div class="blog-extra">
+              <div class="blog-media">
+                <img src="https://placehold.co/800x450/111111/FFFFFF?text=RELAXIN+LIVE" alt="RELAXIN live" />
+              </div>
+              <div class="blog-extra-text">
+                extra text for this show — notes, tracklist, collaborators, etc.
+              </div>
+            </div>
+          </article>
+
+          <!-- BLOG ITEM 2 (с медиа) -->
+          <article class="blog-item" data-item="2">
+            <div class="blog-summary">
+              <div class="blog-meta">2025-10-02 · release</div>
+              <div class="blog-title">EP out on xpone</div>
+              <div class="blog-text">debut release · 5 tracks · somewhere between bar italia, smerz and klein.</div>
+            </div>
+            <div class="blog-extra">
+              <div class="blog-media">
+                <img src="https://placehold.co/800x450/222222/FFFFFF?text=XPONE+EP" alt="xpone ep" />
+              </div>
+              <div class="blog-extra-text">
+                extended liner notes, credits, links to download, etc.
+              </div>
+            </div>
+          </article>
+
+          <!-- BLOG ITEM 3 (без медиа, только текст) -->
+          <article class="blog-item" data-item="3">
+            <div class="blog-summary">
+              <div class="blog-meta">2025-09-01 · radio</div>
+              <div class="blog-title">mix for odixxey</div>
+              <div class="blog-text">an hour of slow-burn guitar loops, fragmented vocals and raw demos.</div>
+            </div>
+            <div class="blog-extra">
+              <div class="blog-extra-text">
+                link to archive, tracklist, maybe small note about the mood / process.
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="blog-hint">
+          click on an update to expand / collapse
+        </div>
+      </section>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <aside class="column-links">
+      <section class="about">
+        <p>
+          B2E is an independent band working somewhere between experimental pop, indie-rock
+          and raw internet music. songs are written and recorded in small rooms, on cheap gear,
+          with attention to detail and errors.
+        </p>
+        <p>
+          the project circulates around odixxey label/radio, xpone and RELAXIN,
+          moving between live shows, mixes, intimate releases and collaborative work.
+        </p>
+      </section>
+
+      <section class="link-group" aria-label="listen">
+        <div class="link-group-title">listen</div>
+        <ul class="link-list">
+          <li><a href="#" target="_blank" rel="noopener noreferrer">bandcamp</a></li>
+          <li><a href="#" target="_blank" rel="noopener noreferrer">soundcloud</a></li>
+          <li><a href="#" target="_blank" rel="noopener noreferrer">spotify</a></li>
+        </ul>
+      </section>
+
+      <section class="link-group" aria-label="watch">
+        <div class="link-group-title">watch</div>
+        <ul class="link-list">
+          <li><a href="#" target="_blank" rel="noopener noreferrer">video archive</a></li>
+          <li><a href="#" target="_blank" rel="noopener noreferrer">live sessions</a></li>
+        </ul>
+      </section>
+
+      <section class="link-group" aria-label="social">
+        <div class="link-group-title">social</div>
+        <ul class="link-list">
+          <li><a href="#" target="_blank" rel="noopener noreferrer">instagram</a></li>
+          <li><a href="#" target="_blank" rel="noopener noreferrer">telegram</a></li>
+        </ul>
+      </section>
+
+      <section class="link-group" aria-label="contact">
+        <div class="link-group-title">contact</div>
+        <ul class="link-list">
+          <li><a href="mailto:booking@projectname.xyz">booking@projectname.xyz</a></li>
+        </ul>
+      </section>
+
+      <!-- SECONDARY FEATURE MEDIA BLOCK (под правым блоком) -->
+      <section class="feature feature-secondary" aria-label="secondary media">
+        <div class="feature-media">
+          <!-- сейчас просто картинка-плейсхолдер.
+               позже можно заменить на <video muted playsinline loop></video> -->
+          <img src="https://placehold.co/800x450/000000/FFFFFF?text=SECONDARY+VIDEO" alt="secondary media" />
+          <button class="mute-toggle" type="button" aria-label="toggle sound">◎◎</button>
+        </div>
+      </section>
+
+    </aside>
+  </section>
+
+  <footer>
+    <span>B2E</span>
+    <span>early internet layout, no decoration</span>
+  </footer>
+</main>
+
+<script>
+  // раскрытие / сворачивание апдейтов по клику
+  document.addEventListener('DOMContentLoaded', function () {
+    var items = document.querySelectorAll('.blog-item');
+    items.forEach(function (item) {
+      item.addEventListener('click', function (event) {
+        if (event.target.closest('a')) return;
+        item.classList.toggle('open');
+      });
+    });
+
+    // mute toggle для вторичного медиаблока
+    var muteBtn = document.querySelector('.mute-toggle');
+    var video = document.querySelector('.feature-secondary video');
+    if (muteBtn && video) {
+      muteBtn.addEventListener('click', function (event) {
+        event.stopPropagation();
+        video.muted = !video.muted;
+        muteBtn.textContent = video.muted ? '◎◎' : '◉◉';
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
