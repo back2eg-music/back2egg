@@ -12,7 +12,21 @@
       --border: #c0c0c0;
       --show-secondary-cover: no; /* yes = показать, no = скрыть */
 }
+.featured-audio-controls {
+  margin-top: 6px;
+  display: flex;
+  gap: 10px;
+}
 
+.featured-audio-button {
+  font-size: 28px;
+  line-height: 1;
+  padding: 6px 14px;
+  border: 1px solid var(--fg);
+  background: #ffffff;
+  cursor: pointer;
+  user-select: none;
+}
 /* toggle secondary cover via body class */
 body.hide-secondary-cover .feature-secondary {
     display: none;
@@ -323,11 +337,19 @@ body.hide-secondary-cover .feature-secondary {
     ></video>
   </div>
 
-  <div class="featured-audio-controls">
-    <button type="button" class="featured-audio-button" id="featured-audio-toggle">
-      🔇
-    </button>
-  </div>
+<div class="featured-audio-controls">
+  <button 
+    type="button" 
+    class="featured-audio-button" 
+    id="featured-sound-off"
+  >🔇</button>
+
+  <button 
+    type="button" 
+    class="featured-audio-button" 
+    id="featured-sound-on"
+  >🔊</button>
+</div>
 
   <div class="feature-caption">
     new live session · 2025
