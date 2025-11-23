@@ -502,6 +502,29 @@ body.hide-secondary-cover .feature-secondary {
         muteBtn.textContent = video.muted ? '◎◎' : '◉◉';
       });
     }
+
+        // FEATURED VIDEO SOUND CONTROLS
+    var featuredVideo = document.getElementById('featured-video');
+    var soundOffBtn = document.getElementById('featured-sound-off');
+    var soundOnBtn  = document.getElementById('featured-sound-on');
+
+    if (featuredVideo && soundOffBtn && soundOnBtn) {
+      
+      // выключение звука
+      soundOffBtn.addEventListener('click', function () {
+        featuredVideo.muted = true;
+        featuredVideo.volume = 0;
+        featuredVideo.play().catch(() => {});
+      });
+
+      // включение звука
+      soundOnBtn.addEventListener('click', function () {
+        featuredVideo.muted = false;
+        featuredVideo.volume = 1.0;
+
+        featuredVideo.play().catch(() => {});
+      });
+    }
   });
 </script>
 
