@@ -13,8 +13,8 @@
       --show-secondary-cover: no; /* yes = показать, no = скрыть */
 }
 
-/* toggle logic */
-:root[style*="--show-secondary-cover: no"] .feature-secondary {
+/* toggle secondary cover via body class */
+body.hide-secondary-cover .feature-secondary {
     display: none;
 }
     * {
@@ -299,7 +299,7 @@
     }
   </style>
 </head>
-<body>
+<body class="hide-secondary-cover">
 <main>
 
   <!-- header без названия проекта, только линия -->
