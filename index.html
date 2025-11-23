@@ -10,8 +10,14 @@
       --fg: #111111;
       --muted: #777777;
       --border: #c0c0c0;
-    }
+    
+--show-secondary-cover: yes; /* yes = показать, no = скрыть */
+}
 
+/* toggle logic */
+:root[style*="--show-secondary-cover: no"] .feature-secondary {
+    display: none;
+}
     * {
       box-sizing: border-box;
     }
