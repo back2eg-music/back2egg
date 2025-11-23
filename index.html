@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --bg: #400200;
+      --bg: #FFFFFF;
       --fg: #111111;
       --muted: #777777;
       --border: #c0c0c0;
@@ -73,10 +73,7 @@ body.hide-secondary-cover .feature-secondary {
     }
 
     .layout {
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
-      gap: 24px;
-      align-items: flex-start;
+      display: block;
     }
 
     @media (max-width: 800px) {
@@ -320,43 +317,65 @@ body.hide-secondary-cover .feature-secondary {
   <header></header>
 
   <section class="layout">
-    <!-- LEFT COLUMN -->
-    <div class="column-main">
-      <!-- FEATURE FRAME (общий превью-блок) -->
-    <section class="feature" aria-label="featured">
-  <div class="feature-label">now / featured</div>
+    
+    <!-- RIGHT COLUMN -->
+    <aside class="column-links">
 
-  <div class="feature-media">
-    <video 
-    id="featured-video"
-    src="session.mp4"
-      muted
-      autoplay
-      loop
-      playsinline
-    ></video>
-  </div>
 
-<div class="featured-audio-controls">
-  <button 
-    type="button" 
-    class="featured-audio-button" 
-    id="featured-sound-off"
-  >🔇</button>
 
-  <button 
-    type="button" 
-    class="featured-audio-button" 
-    id="featured-sound-on"
-  >🔊</button>
-</div>
+      <section class="about" aria-label="listen">
+        <div class="link-group-title">listen</div>
+        <ul class="link-list">
+          <li><a href="#" target="_blank" rel="noopener noreferrer">bandcamp</a></li>
+          <li><a href="#" target="_blank" rel="noopener noreferrer">soundcloud</a></li>
+          <li><a href="#" target="_blank" rel="noopener noreferrer">spotify</a></li>
+        </ul>
+      </section>
 
-  <div class="feature-caption">
-    new live session · 2025
-  </div>
-</section>
+      <section class="link-group" aria-label="watch">
+        <div class="link-group-title">watch</div>
+        <ul class="link-list">
+          <li><a href="#" target="_blank" rel="noopener noreferrer">video archive</a></li>
+          <li><a href="#" target="_blank" rel="noopener noreferrer">live sessions</a></li>
+        </ul>
+      </section>
 
-      <!-- LOG / UPDATES -->
+      <section class="link-group" aria-label="social">
+        <div class="link-group-title">social</div>
+        <ul class="link-list">
+          <li><a href="#" target="_blank" rel="noopener noreferrer">instagram</a></li>
+          <li><a href="#" target="_blank" rel="noopener noreferrer">telegram</a></li>
+        </ul>
+      </section>
+
+      <section class="link-group" aria-label="contact">
+        <div class="link-group-title">contact</div>
+        <ul class="link-list">
+          <li><a href="mailto:booking@projectname.xyz">booking@projectname.xyz</a></li>
+        </ul>
+      </section>
+
+            <section class="link-group">
+        <p>
+          The egg has cracked 
+          and the song has born from tiny Paris apartment..
+        </p>
+        <p>
+          
+        </p>
+      </section>
+
+      <!-- SECONDARY FEATURE MEDIA BLOCK (под правым блоком) -->
+      <section class="feature feature-secondary" aria-label="secondary media">
+        <div class="feature-media">
+          <!-- сейчас просто картинка-плейсхолдер.
+               позже можно заменить на <video muted playsinline loop></video> -->
+          <img src="featured.jpeg" alt="featured media" />
+          <button class="mute-toggle" type="button" aria-label="toggle sound">◎◎</button>
+        </div>
+      </section>
+
+       <!-- LOG / UPDATES -->
       <section class="blog" aria-label="log">
         <div class="blog-header">log / updates</div>
 
@@ -418,63 +437,44 @@ body.hide-secondary-cover .feature-secondary {
       </section>
     </div>
 
-    <!-- RIGHT COLUMN -->
-    <aside class="column-links">
+      
+    <!-- LEFT COLUMN -->
+    <div class="column-main">
+      <!-- FEATURE FRAME (общий превью-блок) -->
+    <section class="feature" aria-label="featured">
+  <div class="feature-label">now / featured</div>
 
+  <div class="feature-media">
+    <video 
+    id="featured-video"
+    src="session.mp4"
+      muted
+      autoplay
+      loop
+      playsinline
+    ></video>
+  </div>
 
+<div class="featured-audio-controls">
+  <button 
+    type="button" 
+    class="featured-audio-button" 
+    id="featured-sound-off"
+  >🔇</button>
 
-      <section class="about" aria-label="listen">
-        <div class="link-group-title">listen</div>
-        <ul class="link-list">
-          <li><a href="#" target="_blank" rel="noopener noreferrer">bandcamp</a></li>
-          <li><a href="#" target="_blank" rel="noopener noreferrer">soundcloud</a></li>
-          <li><a href="#" target="_blank" rel="noopener noreferrer">spotify</a></li>
-        </ul>
-      </section>
+  <button 
+    type="button" 
+    class="featured-audio-button" 
+    id="featured-sound-on"
+  >🔊</button>
+</div>
 
-      <section class="link-group" aria-label="watch">
-        <div class="link-group-title">watch</div>
-        <ul class="link-list">
-          <li><a href="#" target="_blank" rel="noopener noreferrer">video archive</a></li>
-          <li><a href="#" target="_blank" rel="noopener noreferrer">live sessions</a></li>
-        </ul>
-      </section>
+  <div class="feature-caption">
+    new live session · 2025
+  </div>
+</section>
 
-      <section class="link-group" aria-label="social">
-        <div class="link-group-title">social</div>
-        <ul class="link-list">
-          <li><a href="#" target="_blank" rel="noopener noreferrer">instagram</a></li>
-          <li><a href="#" target="_blank" rel="noopener noreferrer">telegram</a></li>
-        </ul>
-      </section>
-
-      <section class="link-group" aria-label="contact">
-        <div class="link-group-title">contact</div>
-        <ul class="link-list">
-          <li><a href="mailto:booking@projectname.xyz">booking@projectname.xyz</a></li>
-        </ul>
-      </section>
-
-            <section class="link-group">
-        <p>
-          The egg has cracked 
-          and the song has born from tiny Paris apartment..
-        </p>
-        <p>
-          
-        </p>
-      </section>
-
-      <!-- SECONDARY FEATURE MEDIA BLOCK (под правым блоком) -->
-      <section class="feature feature-secondary" aria-label="secondary media">
-        <div class="feature-media">
-          <!-- сейчас просто картинка-плейсхолдер.
-               позже можно заменить на <video muted playsinline loop></video> -->
-          <img src="featured.jpeg" alt="featured media" />
-          <button class="mute-toggle" type="button" aria-label="toggle sound">◎◎</button>
-        </div>
-      </section>
-
+  
     </aside>
   </section>
 
