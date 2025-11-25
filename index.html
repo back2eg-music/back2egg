@@ -6,13 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --bg: #f5f5f5;
+      --bg: #FFFFFF;
       --fg: #111111;
       --muted: #777777;
-      --border: #c0c0c0;
+      --border: #B3B3B3;
       --show-secondary-cover: no; /* yes = показать, no = скрыть */
 }
+.featured-audio-controls {
+  margin-top: 6px;
+  display: flex;
+  gap: 10px;
+}
 
+.featured-audio-button {
+  font-size: 18px;
+  line-height: 1;
+  padding: 3px 8px;
+  border: 1px solid var(--fg);
+  background: #ffffff;
+  cursor: pointer;
+  user-select: none;
+}
 /* toggle secondary cover via body class */
 body.hide-secondary-cover .feature-secondary {
     display: none;
@@ -299,7 +313,7 @@ body.hide-secondary-cover .feature-secondary {
     }
   </style>
 </head>
-<body class="hide-secondary-cover">
+<body>
 <main>
 
   <!-- header без названия проекта, только линия -->
@@ -309,19 +323,38 @@ body.hide-secondary-cover .feature-secondary {
     <!-- LEFT COLUMN -->
     <div class="column-main">
       <!-- FEATURE FRAME (общий превью-блок) -->
-      <section class="feature" aria-label="featured">
-        <div class="feature-label">now / featured</div>
-        <div class="feature-media">
-          <!-- картинка по умолчанию; можно заменить на video позже -->
-          <img src="featured.jpeg" alt="featured media" />
-        </div>
-        <div class="feature-caption">
-          Wind Under The Cap · soon 2025
-        </p>
-        <p>
-          LISTEN
-        </div>
-      </section>
+    <section class="feature" aria-label="featured">
+  <div class="feature-label">streaming now /</div>
+
+  <div class="feature-media">
+    <video 
+    id="featured-video"
+    src="session.mp4"
+      muted
+      autoplay
+      loop
+      playsinline
+    ></video>
+  </div>
+
+<div class="featured-audio-controls">
+  <button 
+    type="button" 
+    class="featured-audio-button" 
+    id="featured-sound-off"
+  >🔇</button>
+
+  <button 
+    type="button" 
+    class="featured-audio-button" 
+    id="featured-sound-on"
+  >🔊</button>
+</div>
+
+  <div class="feature-caption">
+    improvised studio fragments / freestyle poetry notes · nov 2025
+  </div>
+</section>
 
       <!-- LOG / UPDATES -->
       <section class="blog" aria-label="log">
@@ -332,9 +365,9 @@ body.hide-secondary-cover .feature-secondary {
           <!-- BLOG ITEM 1 (с медиа) -->
           <article class="blog-item" data-item="1">
             <div class="blog-summary">
-              <div class="blog-meta">2025-11-19 · live</div>
-              <div class="blog-title">show at RELAXIN — set with new material</div>
-              <div class="blog-text">first performance of new songs written for odixxey sessions. limited capacity.</div>
+              <div class="blog-meta">2025-08-17 · live</div>
+              <div class="blog-title">Show in Brussels / upcoming event and Bring our Own (iced) Lattes </div>
+              <div class="blog-text">on Sunday June 29th at Chaussée de Vleurgat 67, 1050 Ixelles from 5 to 7:30 pm</div>
             </div>
             <div class="blog-extra">
               <div class="blog-media">
@@ -349,9 +382,10 @@ body.hide-secondary-cover .feature-secondary {
           <!-- BLOG ITEM 2 (с медиа) -->
           <article class="blog-item" data-item="2">
             <div class="blog-summary">
-              <div class="blog-meta">2025-10-02 · release</div>
-              <div class="blog-title">EP out on xpone</div>
-              <div class="blog-text">debut release · 5 tracks · somewhere between bar italia, smerz and klein.</div>
+              <div class="blog-meta">2025-08-15 · live</div>
+              <div class="blog-title"> live in Berlin on xponelive03 🎶 27/06</div>
+              <div class="blog-text"> Third event by xpone at Studio.dB Berlin. Ppresenting live acts by: Vanessa Amara — Berlin debut, Ity, B2E and dj sets from: Aeriform, Mark Dartau 
+</div>
             </div>
             <div class="blog-extra">
               <div class="blog-media">
@@ -366,9 +400,15 @@ body.hide-secondary-cover .feature-secondary {
           <!-- BLOG ITEM 3 (без медиа, только текст) -->
           <article class="blog-item" data-item="3">
             <div class="blog-summary">
-              <div class="blog-meta">2025-09-01 · radio</div>
-              <div class="blog-title">mix for odixxey</div>
-              <div class="blog-text">an hour of slow-burn guitar loops, fragmented vocals and raw demos.</div>
+              <div class="blog-meta">2025-09-01 · release</div>
+              <div class="blog-title">B2E’s second double-single "It Will Kiss Us As It Bites" is out on all platforms</div>
+              <div class="blog-text">
+                  listen on 
+  <a href="https://open.spotify.com/yourlink" target="_blank">spotify</a>, 
+  <a href="https://music.apple.com/yourlink" target="_blank">apple music</a>, 
+  <a href="https://bandcamp.com/yourlink" target="_blank">bandcamp</a>
+  — plus archive, tracklist, notes etc.
+              </div>
             </div>
             <div class="blog-extra">
               <div class="blog-extra-text">
@@ -387,27 +427,10 @@ body.hide-secondary-cover .feature-secondary {
 
     <!-- RIGHT COLUMN -->
     <aside class="column-links">
-      <section class="about">
-        <p>
-          The egg has cracked 
-          and the song has born from tiny Paris apartment..
-        </p>
-        <p>
-          
-        </p>
-      </section>
 
-      <!-- SECONDARY FEATURE MEDIA BLOCK (под правым блоком) -->
-      <section class="feature feature-secondary" aria-label="secondary media">
-        <div class="feature-media">
-          <!-- сейчас просто картинка-плейсхолдер.
-               позже можно заменить на <video muted playsinline loop></video> -->
-          <img src="featured.jpeg" alt="featured media" />
-          <button class="mute-toggle" type="button" aria-label="toggle sound">◎◎</button>
-        </div>
-      </section>
 
-      <section class="link-group" aria-label="listen">
+
+      <section class="about" aria-label="listen">
         <div class="link-group-title">listen</div>
         <ul class="link-list">
           <li><a href="#" target="_blank" rel="noopener noreferrer">bandcamp</a></li>
@@ -439,6 +462,26 @@ body.hide-secondary-cover .feature-secondary {
         </ul>
       </section>
 
+            <section class="link-group">
+        <p>
+          The egg has cracked 
+          and the song has born from tiny Paris apartment..
+        </p>
+        <p>
+          
+        </p>
+      </section>
+
+      <!-- SECONDARY FEATURE MEDIA BLOCK (под правым блоком) -->
+      <section class="feature feature-secondary" aria-label="secondary media">
+        <div class="feature-media">
+          <!-- сейчас просто картинка-плейсхолдер.
+               позже можно заменить на <video muted playsinline loop></video> -->
+          <img src="featured.jpeg" alt="featured media" />
+          <button class="mute-toggle" type="button" aria-label="toggle sound">◎◎</button>
+        </div>
+      </section>
+
     </aside>
   </section>
 
@@ -467,6 +510,29 @@ body.hide-secondary-cover .feature-secondary {
         event.stopPropagation();
         video.muted = !video.muted;
         muteBtn.textContent = video.muted ? '◎◎' : '◉◉';
+      });
+    }
+
+        // FEATURED VIDEO SOUND CONTROLS
+    var featuredVideo = document.getElementById('featured-video');
+    var soundOffBtn = document.getElementById('featured-sound-off');
+    var soundOnBtn  = document.getElementById('featured-sound-on');
+
+    if (featuredVideo && soundOffBtn && soundOnBtn) {
+      
+      // выключение звука
+      soundOffBtn.addEventListener('click', function () {
+        featuredVideo.muted = true;
+        featuredVideo.volume = 0;
+        featuredVideo.play().catch(() => {});
+      });
+
+      // включение звука
+      soundOnBtn.addEventListener('click', function () {
+        featuredVideo.muted = false;
+        featuredVideo.volume = 1.0;
+
+        featuredVideo.play().catch(() => {});
       });
     }
   });
